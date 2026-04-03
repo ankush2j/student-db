@@ -295,6 +295,132 @@
     color: var(--accent2);
   }
 
+  /* ── Assignment badges ── */
+  .assign-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+    outline: none;
+  }
+
+  .assign-badge.yes {
+    background: rgba(34,197,94,0.12);
+    border: 1px solid rgba(34,197,94,0.3);
+    color: #22c55e;
+  }
+  .assign-badge.yes:hover { background: rgba(34,197,94,0.22); }
+
+  .assign-badge.no {
+    background: rgba(239,68,68,0.10);
+    border: 1px solid rgba(239,68,68,0.25);
+    color: #ef4444;
+  }
+  .assign-badge.no:hover { background: rgba(239,68,68,0.2); }
+
+  /* ── Stats bar ── */
+  .stats-bar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 130px;
+  }
+
+  .stat-card .val {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .stat-card .lbl {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-card.green .val { color: var(--success); }
+  .stat-card.red   .val { color: var(--danger); }
+  .stat-card.blue  .val { color: var(--accent2); }
+
+  /* ── Filter tabs ── */
+  .filter-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-tab {
+    padding: 5px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-family: var(--mono);
+    cursor: pointer;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    transition: all 0.15s;
+  }
+
+  .filter-tab:hover, .filter-tab.active {
+    border-color: var(--accent);
+    color: var(--accent2);
+    background: rgba(59,130,246,0.08);
+  }
+
+  .filter-tab.green.active { border-color: var(--success); color: var(--success); background: rgba(34,197,94,0.08); }
+  .filter-tab.red.active   { border-color: var(--danger);  color: var(--danger);  background: rgba(239,68,68,0.08); }
+
+  /* ── Progress bar ── */
+  .progress-wrap {
+    margin-bottom: 20px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--mono);
+    margin-bottom: 6px;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--success), #4ade80);
+    border-radius: 10px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
   .row-actions {
     display: flex;
     gap: 6px;
@@ -431,6 +557,80 @@
   .toast.green { border-color: #22c55e40; }
   .toast.red   { border-color: #ef444440; }
 
+  /* ── Assignment modal ── */
+  .assign-modal {
+    max-width: 480px;
+  }
+
+  .assign-list {
+    max-height: 280px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .assign-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  .assign-item .aname {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .assign-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* toggle switch */
+  .switch {
+    position: relative;
+    width: 38px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute;
+    inset: 0;
+    background: #374151;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid var(--border);
+  }
+  .slider::before {
+    content: '';
+    position: absolute;
+    width: 14px; height: 14px;
+    left: 2px; top: 2px;
+    background: #9ca3af;
+    border-radius: 50%;
+    transition: 0.2s;
+  }
+  .switch input:checked + .slider { background: rgba(34,197,94,0.25); border-color: #22c55e; }
+  .switch input:checked + .slider::before { transform: translateX(18px); background: #22c55e; }
+
+  .assign-add-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .assign-add-row input { flex: 1; }
+
   /* ── Footer ── */
   footer {
     text-align: center;
@@ -454,6 +654,11 @@
   </div>
   <div class="header-right">
     <div class="stat-pill" id="headerCount">0 records</div>
+    <div class="stat-pill" id="headerSubmit" style="color:var(--success)">0 submitted</div>
+    <button class="btn btn-ghost" onclick="openAssignModal()" style="border-color:#f59e0b30;color:#f59e0b;">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+      Assignments
+    </button>
     <button class="btn btn-success" onclick="exportCSV()">
       <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
       Export CSV
@@ -480,6 +685,26 @@
     </button>
   </div>
 
+  <!-- Stats bar -->
+  <div class="stats-bar" id="statsBar"></div>
+
+  <!-- Progress bar -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-label">
+      <span>Assignment Submission Progress</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="filter-tabs">
+    <span style="font-size:12px;color:var(--muted);font-family:var(--mono);margin-right:4px;">FILTER:</span>
+    <button class="filter-tab active" id="filter-all"     onclick="setFilter('all')">All</button>
+    <button class="filter-tab green"  id="filter-yes"     onclick="setFilter('yes')">✓ Submitted</button>
+    <button class="filter-tab red"    id="filter-no"      onclick="setFilter('no')">✗ Not Submitted</button>
+  </div>
+
   <!-- Sort bar -->
   <div class="sort-bar">
     <span>SORT:</span>
@@ -498,6 +723,7 @@
           <th>Full Name</th>
           <th>UID</th>
           <th>Section</th>
+          <th>Assignment</th>
           <th></th>
         </tr>
       </thead>
@@ -531,6 +757,23 @@
   </div>
 </div>
 
+<!-- Assignment Manager Modal -->
+<div class="overlay" id="assignOverlay">
+  <div class="modal assign-modal">
+    <button class="close-btn" onclick="closeAssignModal()">×</button>
+    <h2>ASSIGNMENTS</h2>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:18px;">Manage assignment list and track submissions per student.</p>
+    <div class="assign-list" id="assignList"></div>
+    <div class="assign-add-row">
+      <input type="text" id="newAssignName" placeholder="New assignment name e.g. Lab-1, DSA HW"/>
+      <button class="btn btn-primary" onclick="addAssignment()">Add</button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeAssignModal()">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- Toast -->
 <div class="toast" id="toast">
   <span id="toastIcon">✓</span>
@@ -541,20 +784,70 @@
 
 <script>
   // ── State ──────────────────────────────────────────────────
-  let students = JSON.parse(localStorage.getItem('students') || '[]');
-  let editIdx = -1;
-  let sortBy = 'name';
+  let students    = JSON.parse(localStorage.getItem('students')    || '[]');
+  let assignments = JSON.parse(localStorage.getItem('assignments') || '[]');
+  // assignments = [{id, name}]
+  // each student has: { name, uid, section, submitted: {assignId: true/false} }
+
+  let editIdx  = -1;
+  let sortBy   = 'name';
+  let filterBy = 'all'; // 'all' | 'yes' | 'no'
 
   // ── Persist ────────────────────────────────────────────────
   function save() {
-    localStorage.setItem('students', JSON.stringify(students));
+    localStorage.setItem('students',    JSON.stringify(students));
+    localStorage.setItem('assignments', JSON.stringify(assignments));
   }
 
-  // ── Sort ───────────────────────────────────────────────────
+  // ── Helpers ────────────────────────────────────────────────
+  function esc(str) {
+    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function isSubmitted(student) {
+    if (!assignments.length) return false;
+    return assignments.every(a => student.submitted && student.submitted[a.id]);
+  }
+
+  function submittedCount(student) {
+    if (!assignments.length) return 0;
+    return assignments.filter(a => student.submitted && student.submitted[a.id]).length;
+  }
+
+  // ── Stats ──────────────────────────────────────────────────
+  function updateStats() {
+    const total    = students.length;
+    const subAll   = students.filter(isSubmitted).length;
+    const notSub   = total - subAll;
+    const pct      = total ? Math.round((subAll / total) * 100) : 0;
+
+    document.getElementById('headerCount').textContent  = total + ' record' + (total !== 1 ? 's' : '');
+    document.getElementById('headerSubmit').textContent = subAll + ' submitted';
+
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressPct').textContent  = pct + '%';
+
+    document.getElementById('statsBar').innerHTML = `
+      <div class="stat-card blue"><div class="val">${total}</div><div class="lbl">Total Students</div></div>
+      <div class="stat-card green"><div class="val">${subAll}</div><div class="lbl">All Submitted</div></div>
+      <div class="stat-card red"><div class="val">${notSub}</div><div class="lbl">Pending</div></div>
+      <div class="stat-card"><div class="val">${assignments.length}</div><div class="lbl">Assignments</div></div>
+      <div class="stat-card ${pct===100?'green':pct>50?'blue':'red'}"><div class="val">${pct}%</div><div class="lbl">Completion</div></div>
+    `;
+  }
+
+  // ── Sort / Filter ──────────────────────────────────────────
   function setSort(key) {
     sortBy = key;
     document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('sort-' + key).classList.add('active');
+    renderTable();
+  }
+
+  function setFilter(f) {
+    filterBy = f;
+    document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+    document.getElementById('filter-' + f).classList.add('active');
     renderTable();
   }
 
@@ -563,61 +856,141 @@
     return [...arr].sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
   }
 
+  // ── Toggle submission inline ────────────────────────────────
+  function toggleSubmit(realIdx, assignId) {
+    if (!students[realIdx].submitted) students[realIdx].submitted = {};
+    students[realIdx].submitted[assignId] = !students[realIdx].submitted[assignId];
+    save(); renderTable(); updateStats();
+  }
+
   // ── Render ─────────────────────────────────────────────────
   function renderTable() {
+    updateStats();
     const q = document.getElementById('searchInput').value.toLowerCase();
-    let data = students;
+    let data = students.map((s, i) => ({...s, _idx: i}));
+
     if (q) data = data.filter(s =>
       s.name.toLowerCase().includes(q) ||
       s.uid.toLowerCase().includes(q) ||
       s.section.toLowerCase().includes(q)
     );
-    data = getSorted(data);
+
+    if (filterBy === 'yes') data = data.filter(s => isSubmitted(s));
+    if (filterBy === 'no')  data = data.filter(s => !isSubmitted(s));
+
+    if (sortBy !== 'none') data.sort((a, b) => a[sortBy].localeCompare(b[sortBy]));
 
     const tbody = document.getElementById('tableBody');
-    document.getElementById('headerCount').textContent = students.length + ' record' + (students.length !== 1 ? 's' : '');
+    const cols  = 6;
 
     if (data.length === 0) {
       tbody.innerHTML = `
-        <tr><td colspan="5">
+        <tr><td colspan="${cols}">
           <div class="empty">
             <svg width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
-            <h3>${q ? 'No results found' : 'No students yet'}</h3>
-            <p>${q ? 'Try a different search term' : 'Click Add Student to get started'}</p>
+            <h3>${q || filterBy!=='all' ? 'No results' : 'No students yet'}</h3>
+            <p>${q ? 'Try a different search term' : filterBy!=='all' ? 'No students match this filter' : 'Click Add Student to get started'}</p>
           </div>
         </td></tr>`;
       return;
     }
 
     tbody.innerHTML = data.map((s, i) => {
-      const realIdx = students.indexOf(s);
+      const ri = s._idx;
+      // Assignment cell: show badge per assignment if any, else overall badge
+      let assignCell = '';
+      if (assignments.length === 0) {
+        assignCell = `<span style="font-size:12px;color:var(--muted);font-family:var(--mono);">No assignments</span>`;
+      } else if (assignments.length === 1) {
+        const a   = assignments[0];
+        const sub = s.submitted && s.submitted[a.id];
+        assignCell = `<button class="assign-badge ${sub?'yes':'no'}" onclick="toggleSubmit(${ri},'${a.id}')" title="Click to toggle">
+          ${sub ? '✓ YES' : '✗ NO'}
+        </button>`;
+      } else {
+        const cnt   = submittedCount(s);
+        const total = assignments.length;
+        const all   = cnt === total;
+        const none  = cnt === 0;
+        assignCell = `
+          <button class="assign-badge ${all?'yes':none?'no':'yes'}" onclick="openStudentAssign(${ri})" title="Click to manage">
+            ${all ? '✓ ALL' : none ? '✗ NONE' : '~ ' + cnt + '/' + total}
+          </button>`;
+      }
+
       return `
         <tr>
           <td class="num">${String(i+1).padStart(2,'0')}</td>
           <td class="name">${esc(s.name)}</td>
           <td class="uid">${esc(s.uid)}</td>
           <td><span class="sec-badge">${esc(s.section)}</span></td>
+          <td>${assignCell}</td>
           <td>
             <div class="row-actions">
-              <button class="icon-btn edit" onclick="openModal(${realIdx})" title="Edit">✏</button>
-              <button class="icon-btn del"  onclick="deleteStudent(${realIdx})" title="Delete">🗑</button>
+              <button class="icon-btn edit" onclick="openModal(${ri})" title="Edit">✏</button>
+              <button class="icon-btn del"  onclick="deleteStudent(${ri})" title="Delete">🗑</button>
             </div>
           </td>
         </tr>`;
     }).join('');
   }
 
-  function esc(str) {
-    return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  // ── Per-student assignment modal ────────────────────────────
+  let studentAssignIdx = -1;
+
+  function openStudentAssign(idx) {
+    studentAssignIdx = idx;
+    const s = students[idx];
+    document.getElementById('modalTitle').textContent  = 'ASSIGNMENTS — ' + s.name;
+    document.getElementById('fName').closest('.modal').querySelector('.field:nth-child(2)').style.display = 'none';
+    // Reuse overlay but swap content
+    const modal = document.getElementById('overlay').querySelector('.modal');
+    modal.innerHTML = `
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2 style="margin-bottom:6px">ASSIGNMENTS</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:16px">${esc(s.name)} · ${esc(s.uid)}</p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+        ${assignments.map(a => {
+          const sub = s.submitted && s.submitted[a.id];
+          return `
+            <div style="display:flex;align-items:center;justify-content:space-between;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;">
+              <span style="font-size:14px;font-weight:500">${esc(a.name)}</span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="font-size:12px;font-family:var(--mono);color:${sub?'var(--success)':'var(--danger)'}">
+                  ${sub ? '✓ Submitted' : '✗ Not yet'}
+                </span>
+                <label class="switch">
+                  <input type="checkbox" ${sub?'checked':''} onchange="toggleSubmit(${idx},'${a.id}');openStudentAssign(${idx})">
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>`;
+        }).join('')}
+      </div>
+      <div style="display:flex;justify-content:flex-end">
+        <button class="btn btn-primary" onclick="closeModal()">Done</button>
+      </div>
+    `;
+    document.getElementById('overlay').classList.add('open');
   }
 
-  // ── Modal ──────────────────────────────────────────────────
+  // ── Add/Edit Student Modal ──────────────────────────────────
   function openModal(idx = -1) {
     editIdx = idx;
-    document.getElementById('modalTitle').textContent = idx >= 0 ? 'EDIT_STUDENT' : 'ADD_STUDENT';
-    document.getElementById('fName').value    = idx >= 0 ? students[idx].name    : '';
-    document.getElementById('fUID').value     = idx >= 0 ? students[idx].uid     : '';
-    document.getElementById('fSection').value = idx >= 0 ? students[idx].section : '';
+    const modal = document.getElementById('overlay').querySelector('.modal');
+    modal.innerHTML = `
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2 id="modalTitle">${idx >= 0 ? 'EDIT_STUDENT' : 'ADD_STUDENT'}</h2>
+      <div class="field"><label>Full Name</label>
+        <input type="text" id="fName" placeholder="e.g. Ankush Singh" value="${idx>=0?esc(students[idx].name):''}"/></div>
+      <div class="field"><label>UID</label>
+        <input type="text" id="fUID" placeholder="e.g. 23BCE1234" value="${idx>=0?esc(students[idx].uid):''}"/></div>
+      <div class="field"><label>Section</label>
+        <input type="text" id="fSection" placeholder="e.g. B1" value="${idx>=0?esc(students[idx].section):''}"/></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="saveStudent()">Save</button>
+      </div>`;
     document.getElementById('overlay').classList.add('open');
     setTimeout(() => document.getElementById('fName').focus(), 100);
   }
@@ -631,20 +1004,62 @@
     const name    = document.getElementById('fName').value.trim();
     const uid     = document.getElementById('fUID').value.trim();
     const section = document.getElementById('fSection').value.trim();
-    if (!name || !uid || !section) {
-      toast('All fields are required!', '⚠', 'red'); return;
-    }
+    if (!name || !uid || !section) { toast('All fields are required!', '⚠', 'red'); return; }
     if (editIdx >= 0) {
-      students[editIdx] = { name, uid, section };
+      students[editIdx] = { ...students[editIdx], name, uid, section };
       toast('Student updated — ' + name, '✓', 'green');
     } else {
-      students.push({ name, uid, section });
+      students.push({ name, uid, section, submitted: {} });
       toast('Student added — ' + name, '✓', 'green');
     }
     save(); closeModal(); renderTable();
   }
 
-  // ── Delete ─────────────────────────────────────────────────
+  // ── Assignment manager modal ────────────────────────────────
+  function openAssignModal() {
+    renderAssignList();
+    document.getElementById('assignOverlay').classList.add('open');
+    setTimeout(() => document.getElementById('newAssignName').focus(), 100);
+  }
+
+  function closeAssignModal() {
+    document.getElementById('assignOverlay').classList.remove('open');
+  }
+
+  function renderAssignList() {
+    const list = document.getElementById('assignList');
+    if (!assignments.length) {
+      list.innerHTML = '<p style="font-size:13px;color:var(--muted);text-align:center;padding:16px">No assignments yet. Add one below.</p>';
+      return;
+    }
+    list.innerHTML = assignments.map((a, i) => `
+      <div class="assign-item">
+        <span class="aname">${esc(a.name)}</span>
+        <span style="font-size:12px;font-family:var(--mono);color:var(--muted)">
+          ${students.filter(s=>s.submitted&&s.submitted[a.id]).length}/${students.length} submitted
+        </span>
+        <button class="icon-btn del" onclick="removeAssignment('${a.id}')" title="Delete assignment">🗑</button>
+      </div>`).join('');
+  }
+
+  function addAssignment() {
+    const name = document.getElementById('newAssignName').value.trim();
+    if (!name) { toast('Enter assignment name', '⚠', 'red'); return; }
+    const id = 'a' + Date.now();
+    assignments.push({ id, name });
+    save(); renderAssignList(); renderTable();
+    document.getElementById('newAssignName').value = '';
+    toast('Assignment added: ' + name, '✓', 'green');
+  }
+
+  function removeAssignment(id) {
+    if (!confirm('Remove this assignment? All submission data for it will be lost.')) return;
+    assignments = assignments.filter(a => a.id !== id);
+    save(); renderAssignList(); renderTable();
+    toast('Assignment removed', '🗑', 'red');
+  }
+
+  // ── Delete student ─────────────────────────────────────────
   function deleteStudent(idx) {
     if (!confirm(`Delete "${students[idx].name}" (${students[idx].uid})?`)) return;
     const name = students[idx].name;
@@ -664,17 +1079,19 @@
   // ── Export CSV ─────────────────────────────────────────────
   function exportCSV() {
     if (students.length === 0) { toast('No data to export', '⚠', 'red'); return; }
-    let csv = '\uFEFF' + 'No.,Name,UID,Section\n';
+    const aHeaders = assignments.map(a => `"${a.name}"`).join(',');
+    let csv = '\uFEFF' + `No.,Name,UID,Section${assignments.length?','+aHeaders:''}\n`;
     students.forEach((s, i) => {
-      csv += `${i+1},"${s.name}","${s.uid}","${s.section}"\n`;
+      const aCols = assignments.map(a => (s.submitted&&s.submitted[a.id])?'"Yes"':'"No"').join(',');
+      csv += `${i+1},"${s.name}","${s.uid}","${s.section}"${assignments.length?','+aCols:''}\n`;
     });
-    csv += `\nTotal,${students.length},,\n`;
+    csv += `\nTotal,${students.length},,,\n`;
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
     a.href = url; a.download = 'students.csv';
     a.click(); URL.revokeObjectURL(url);
-    toast('Exported students.csv — open in Excel', '↓', 'green');
+    toast('Exported with assignment data!', '↓', 'green');
   }
 
   // ── Toast ──────────────────────────────────────────────────
@@ -688,17 +1105,18 @@
     toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
   }
 
-  // ── Keyboard shortcuts ─────────────────────────────────────
+  // ── Keyboard ───────────────────────────────────────────────
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeModal();
-    if (e.key === 'Enter' && document.getElementById('overlay').classList.contains('open'))
-      saveStudent();
+    if (e.key === 'Escape') { closeModal(); closeAssignModal(); }
     if ((e.ctrlKey || e.metaKey) && e.key === 'n') { e.preventDefault(); openModal(); }
   });
 
-  // Close modal on overlay click
-  document.getElementById('overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
+  document.getElementById('assignOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeAssignModal();
+  });
+
+  document.getElementById('newAssignName').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addAssignment();
   });
 
   // ── Init ───────────────────────────────────────────────────
